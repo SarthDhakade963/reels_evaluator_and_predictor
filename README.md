@@ -46,7 +46,7 @@ The VPI Tier system evaluates content using three core metrics. Tier placement f
 Install dependencies:
 
 ```bash
-pip install streamlit pandas
+pip install -r requirements.txt
 ```
 
 ### Files Required
