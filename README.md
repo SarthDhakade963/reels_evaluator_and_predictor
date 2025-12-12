@@ -1,4 +1,4 @@
-# 📈 Video Potential Index (VPI) Diagnostic Report Tool
+# 📈 Reels Evaluator and Predictor
 
 This Streamlit application provides a sophisticated diagnostic report for video content, moving beyond simple weighted scores to predict viral potential using a tiered, algorithmic-centric methodology (VBS/QSS Gates).
 
