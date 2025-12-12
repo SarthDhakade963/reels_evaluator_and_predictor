@@ -1,12 +1,12 @@
 import streamlit as st
 
-from display import display_final_rubric_output
+from display import display_final_vpi_report, sample_preview_frames
 from evaluator import evaluate_video
 from extract_frame import extract_frames
 
-st.set_page_config(page_title="Video Rubric Evaluator", layout="wide")
+st.set_page_config(page_title="Reel Evaluator Evaluator", layout="wide")
 
-st.title("🎥 Video → Frames → Rubric Evaluator (Gemini Powered)")
+st.title("🎥 Reel Evaluator")
 
 uploaded_video = st.file_uploader("Upload a video", type=["mp4", "mov", "mkv"])
 
@@ -22,10 +22,13 @@ if uploaded_video:
     st.write(f"Extracted {len(frames)} frames (1 fps sampling)")
 
     st.subheader("Preview Frames")
+
+    preview_indices = sample_preview_frames(frames, preview_count=6)
+
     cols = st.columns(3)
-    for i, f in enumerate(frames[:6]):
+    for i, idx in enumerate(preview_indices):
         with cols[i % 3]:
-            st.image(f, caption=f"Frame {i}")
+            st.image(frames[idx], caption=f"Frame {idx}")
 
     st.subheader("Run Rubric Evaluation")
     if st.button("Evaluate Video Content"):
@@ -34,6 +37,6 @@ if uploaded_video:
             
             st.subheader("Evaluation Results")
 
-            display_final_rubric_output(full_evaluation_result, len(frames))
+            display_final_vpi_report(full_evaluation_result, len(frames))
 
             st.success("Evaluation Complete!")

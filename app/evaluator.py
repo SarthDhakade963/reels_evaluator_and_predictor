@@ -21,7 +21,6 @@ except Exception as e:
     st.error(f"Failed to initialize Gemini Client: {e}")
     client = None
 
-# --- CONSTANTS ---
 MODEL_NAME = 'gemini-2.5-flash'
 
 
@@ -41,6 +40,7 @@ def evaluate_video(frames):
     config = types.GenerateContentConfig(
         response_mime_type="application/json",
         response_schema=FULL_RUBRIC_SCHEMA,
+        temperature=0.0
     )
 
     try:
